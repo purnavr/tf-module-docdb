@@ -12,3 +12,6 @@ variable "instance_class" {}
 variable "storage_encrypted" {
   default = true
 }
+
+variable "allow_subnets" {}
+variable "vpc_id" {}
