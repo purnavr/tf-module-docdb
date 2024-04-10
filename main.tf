@@ -80,6 +80,7 @@ resource "aws_ssm_parameter" "docdb_url_user" {
   value = "mongodb://${data.aws_ssm_parameter.user.value}:${data.aws_ssm_parameter.pass.value}:27017/users?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
 }
 
+
 resource "aws_ssm_parameter" "docdb_endpoint" {
   name = "${var.env}.docdb.endpoint"
   type = "String"
