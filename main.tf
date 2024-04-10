@@ -66,25 +66,23 @@ resource "aws_docdb_subnet_group" "main" {
 }
 
 
-resource "aws_ssm_parameter" "docdb_url" {
-  name = "${var.env}.docdb.url.catalogue"
-  type = "String"
+resource "aws_ssm_parameter" "docdb_url_catalogue" {
+  name  = "${var.env}.docdb.url.catalogue"
+  type  = "String"
   value = "mongodb://${data.aws_ssm_parameter.user.value}:${data.aws_ssm_parameter.pass.value}@${aws_docdb_cluster.main.endpoint}:27017/catalogue?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
 }
 
 resource "aws_ssm_parameter" "docdb_url_user" {
-  name = "${var.env}.docdb.url.user"
-  type = "String"
+  name  = "${var.env}.docdb.url.user"
+  type  = "String"
   value = "mongodb://${data.aws_ssm_parameter.user.value}:${data.aws_ssm_parameter.pass.value}@${aws_docdb_cluster.main.endpoint}:27017/users?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
 }
 
-
 resource "aws_ssm_parameter" "docdb_endpoint" {
-  name = "${var.env}.docdb.endpoint"
-  type = "String"
+  name  = "${var.env}.docdb.endpoint"
+  type  = "String"
   value = aws_docdb_cluster.main.endpoint
 }
-
 
 
 
